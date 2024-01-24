@@ -13,9 +13,10 @@ import ButtonGroup from "./buttonState";
 import { FaStar } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { TranslateContext } from "../Static/TranslateContext";
+import { TData } from "../Static/TranslateData";
 export default function LevelPage(props) {
     var { Lang, SetStarsData } = useContext(TranslateContext)
-
+    var Data = TData.filter((el)=>el.lang == Lang)[0]
     const SwiperLvl = useRef(null)
     const [CheckResults, SetCheckResults] = useState(false);
     var [Stars, SetStars] = useState(0)
@@ -83,7 +84,7 @@ export default function LevelPage(props) {
                     {!CheckResults && <button className="nextQuestion" onClick={() => {
                         SetCheckResults(true)
                         ClickToCheckRes()
-                    }}>Посчитать результат</button>}
+                    }}>{Data.ResBtnName}</button>}
                 </SwiperSlide>
 
             </Swiper>}
@@ -111,7 +112,7 @@ export default function LevelPage(props) {
                         <FaStar className={Stars >= 2 ? "star golden" : "star "} />
                     </motion.div>
                 </div>
-                <Link to="/"><motion.button   initial={{  opacity: 0 }} animate={{  opacity: 1, transition: { delay: 1 } }} exit={{ opacity: 0 }} className="nextQuestion">Вернуться</motion.button></Link>
+                <Link to="/"><motion.button   initial={{  opacity: 0 }} animate={{  opacity: 1, transition: { delay: 1 } }} exit={{ opacity: 0 }} className="nextQuestion">{Data.backBtn}</motion.button></Link>
             </AnimatePresence>}
         </div>
     </main>)

@@ -6,8 +6,10 @@ import { intData } from "./1gameData";
 import Form from 'react-bootstrap/Form';
 import { Col, Row } from "react-bootstrap"
 import { AnimatePresence, motion } from "framer-motion"
+import { TData } from "../Static/TranslateData";
 export default function InteractivePage() {
     var { Lang } = useContext(TranslateContext)
+    var Data = TData.filter((el)=>el.lang == Lang)[0]
     const [Completed, SetCompleted] = useState({
         state: false,
         state1: false,
@@ -48,7 +50,7 @@ export default function InteractivePage() {
                     return (<Col key={ind} className="box" >
                         <img src={"/images/" + el.name + ".jpg"} alt="" />
                         <Form.Select aria-label="Default select example" className="form_select" onClick={(el) => setSelected(ind, el.target.value)}>
-                            <option>Выбери</option>
+                            <option>{Data.Select}</option>
                             {intData.map((el, ind) => {
                                 return (<option key={ind} value={Lang == "RU" ? el.name : Lang == "JP" ? el.nameJP : el.nameUS}>{Lang == "RU" ? el.name : Lang == "JP" ? el.nameJP : el.nameUS}</option>)
                             })}
@@ -57,14 +59,14 @@ export default function InteractivePage() {
                 })}
             </Row>
             <div className="flex_div">
-                {!Completed.state && <motion.button whileHover={{ scale: 1.1, color: "green", borderColor: "green" }} transition={{ type: "spring", stiffness: 300 }} className="button_class" onClick={() => { Answer() }}>Выполнено</motion.button>}
+                {!Completed.state && <motion.button whileHover={{ scale: 1.1, color: "green", borderColor: "green" }} transition={{ type: "spring", stiffness: 300 }} className="button_class" onClick={() => { Answer() }}>{Data.End}</motion.button>}
             </div>
         </Container>
         {Completed.state && <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="win_box">
                 <div className="box2">
                     <p>Количество совпадений: {State.filter((el) => el).length}</p>
-                    <motion.button whileHover={{ scale: 1.1, color: "green", borderColor: "green" }} transition={{ type: "spring", stiffness: 300 }} className="button_class" onClick={() => { window.location.reload() }}>Перезагрузить</motion.button>
+                    <motion.button whileHover={{ scale: 1.1, color: "green", borderColor: "green" }} transition={{ type: "spring", stiffness: 300 }} className="button_class" onClick={() => { window.location.reload() }}>{Data.Reload}</motion.button>
                 </div>
             </motion.div>
         </AnimatePresence>}
