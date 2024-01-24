@@ -1,0 +1,47 @@
+.ans_style{
+    display: flex;
+    flex-flow: row wrap;
+}
+.text_win{
+    font-weight: bold;
+    font-size: 20pt;
+    text-align: center;
+}
+.ans_style button{
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.question{
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #008DD8;
+    text-align: center;
+}
+.question_block{
+    text-align: center;
+    display: flex;
+    padding: 40px;
+    align-items: center;
+    flex-flow: column ;
+}
+.nextQuestion, .active{
+    background-color: rgb(119, 180, 27);
+    color: white;
+    font-weight: bold;
+    border: 0;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.Results{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column ;
+}

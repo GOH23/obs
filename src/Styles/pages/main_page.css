@@ -1,0 +1,11 @@
+.container_levels{
+    display: flex;
+    justify-content: space-between ;
+    flex-flow: row wrap;
+    
+}
+@media (max-width: 500px) {
+    .container_levels{
+        justify-content: center;
+    }
+}
